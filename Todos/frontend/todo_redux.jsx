@@ -1,16 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store.js';
+import Root from './components/root.jsx';
 
-
-const tester = <h1>Todos App</h1>;
+// const tester = <h1>Todos App</h1>;
+let store = configureStore();
 
 document.addEventListener('DOMContentLoaded',
   () => {
-  const root= document.getElementById('root');
-  ReactDOM.render(tester, root);
+  const rootEle = document.getElementById('root');
+    ReactDOM.render(<Root store={store}/>, rootEle);
 });
 
-let store = configureStore();
-window.store = store;
+// window.store = store;
 // window.store.getState();

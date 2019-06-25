@@ -24,20 +24,20 @@ const initialState = {
 //   };
 
 
-const todosReducer = (state = initialState, action) => {
-  Object.freeze(state);
-  
+const todosReducer = (oldState = initialState, action) => {
+  Object.freeze(oldState);
+  let newState = {};
   switch(action.type) {
     case 'RECEIVE_TODOS':
-      return action.todos;
-
+      action.todos.map((todo) => {newState[todo.id] = todo});
+      return newState;
     case 'RECEIVE_TODO':
       // let newObj = Object.assign({action.todo}, state);
       // action.todo
       // return newTodo.merge(state);
 
     default:
-      return state;
+      return oldState;
       }
 };
 
