@@ -1,6 +1,9 @@
 import React from 'react';
 import todosReducer from '../../reducers/todos_reducer';
+import { receiveTodo } from '../../actions/todo_actions';
 import TodoListItem from './todo_list_item';
+import TodoForm from '../todo_list/todo_form';
+import uniqueId from '../../utils/util';
 
 class TodoList extends React.Component {
   constructor(props) {
@@ -19,7 +22,7 @@ class TodoList extends React.Component {
     //     done: true
     //   }
     // ];
-  };
+  }
 
   
   render() {
@@ -35,6 +38,9 @@ class TodoList extends React.Component {
       <ul>
           {listItems}   
       </ul>
+        <TodoForm 
+        key={uniqueId()}
+        receiveTodo={receiveTodo} />
     </div>
     );
   }
